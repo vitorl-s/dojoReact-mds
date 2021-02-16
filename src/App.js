@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import Button from './Components/button';
 
 function App() {
+  const [button2Color, setButton2Color] = useState('blue');
+  const [tempoCronometro, setTempoCronometro] = useState(0);
+  const [clickouNovamente, setClickouNovamente] = useState(false);
+
+  function disparaCronometro() {
+    if (tempoCronometro === 0) {
+      incrementarContagem()
+    } else {
+      setClickouNovamente(!clickouNovamente);
+    }
+  }
+
+  function incrementarContagem() {
+    setTempoCronometro(tempoCronometro + 1);
+  }
+
+  function paraCronometro() {
+    setClickouNovamente(true);
+  }
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!clickouNovamente) incrementarContagem();
+      else paraCronometro();
+    }, 1000)
+  }, [tempoCronometro]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ backgroundColor: 'gray', width: '100vw', height: '100vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection:'column' }}>
+        <h1>{tempoCronometro}</h1>
+        <div>
+          <Button
+            title="botao1"
+            background={button2Color}
+            mudaBotao={disparaCronometro}
+          />
+        </div>
+      </div>
     </div>
   );
 }
