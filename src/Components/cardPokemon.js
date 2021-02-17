@@ -20,7 +20,7 @@ const CardPokemon = ({ pokemon }) => {
 
     switch(a){
 
-      case 'grass':
+      case 'Grass':
         setShowColor("#7FFF00")
         break;
 
