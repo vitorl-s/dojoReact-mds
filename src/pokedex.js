@@ -23,7 +23,7 @@ function getPokemons() {
         pokemons.length === 0 ? <h1>Carregando...</h1>  : 
         pokemons.map( pokemon => {
           return(
-            <CardPokemon pokemon={pokemon}/>
+            <CardPokemon pokemon={pokemon} pokemonType={pokemon.type[0]} pokemonWeakness={pokemon.weaknesses[0]}/>
           )
         }) 
       }
