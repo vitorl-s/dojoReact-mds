@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
+const colorType = {
+  Grass: '#51b6aa',
+  Fire: '#e26768',
+  Electric: '#f0c44b',
+  Water: '#6890F0',
+  Bug: '#A7DB8D',
+  Normal: '#C6C6A7',
+  Ice: '#94bcc7',
+  Dragon: '#7038F8',
+  Ground: '#E0C068',
+  Fairy: '#EE99AC',
+  Steel: '#B8B8D0',
+  Psychic: '#A13959',
+  Poison: '#A040A0',
+  Fighting: '#EBD69D',
+  Rock: '#927D44',
+  Ghost: '#493963'
+};
+
 const CardPokemon = ({ pokemon }) => {
   const [showInfo, setShowInfo] = useState(false);
   const [showType, setShowType] = useState(false);
@@ -18,78 +37,7 @@ const CardPokemon = ({ pokemon }) => {
 
     var a = pokemon.type[0]
 
-    switch(a){
-
-      case 'Grass':
-        setShowColor("#7FFF00")
-        break;
-
-      case 'Poison':
-        setShowColor("#8A2BE2")
-        break;
-
-      case 'Flying':
-        setShowColor("F0F8FF")
-        break;
-
-      case 'Fire':
-        setShowColor("#DC143C")
-        break;
-
-      case 'Ice':
-        setShowColor("#00BFFF")
-        break;
-
-      case 'Pychic':
-        setShowColor("#FF1493")
-        break;
-
-      case 'Water':
-        setShowColor("#1E90FF")
-        break;
-
-      case 'Electric':
-        setShowColor("#FFD700")
-        break;
-
-      case 'Bug':
-        setShowColor("#F0E68C")
-        break;
-
-      case 'Rock':
-        setShowColor("#808080")
-        break;
-
-      case 'Normal':
-        setShowColor("#D2691E")
-        break;
-
-      case 'Ground':
-        setShowColor("#DEB887")
-        break;
-
-      case 'Fighting':
-        setShowColor("#A52A2A")
-        break;
-
-      case 'Dragon':
-        setShowColor("00008B")
-        break;
-
-      case 'Ghost':
-        setShowColor("#7B68EE")
-        break;
-
-      case 'Dark':
-        setShowColor("#000000")
-        break;
-
-      default:
-        setShowColor("lightblue")
-        break;
-
-      
-    }
+    setShowColor(colorType[a])
 
 
   }, [])
@@ -120,12 +68,6 @@ const CardPokemon = ({ pokemon }) => {
   );
 
 
-}
-
-const Dbutton = () => {
-  const onClick = () => console.log('clicked');
-
-  return <div onClick={onClick}>Type</div>
 }
 
 const styles = {
